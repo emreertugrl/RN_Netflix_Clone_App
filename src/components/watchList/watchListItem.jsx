@@ -3,11 +3,13 @@ import {Pressable} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {watchListStyle} from '../../styles/watchListStyle';
 import {getRandomColor} from '../../utils/functions';
+import {TAB} from '../../utils/routes';
 
 const WatchListItem = ({item, index}) => {
   const navigation = useNavigation();
   return (
     <Pressable
+      // navigation.replace ile önceki yol unutulur
       onPress={() => navigation.replace(TAB)}
       style={watchListStyle.watchListContainer}>
       <View
