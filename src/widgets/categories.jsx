@@ -1,15 +1,9 @@
 import {FlatList, View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {useEffect} from 'react';
-import {getCategories} from '../store/actions/movieActions';
+import {useSelector} from 'react-redux';
 import CategoryItem from '../components/widgets/categoryItem';
 
 const Categories = () => {
-  const dispatch = useDispatch();
   const {categories} = useSelector(state => state.movies);
-  useEffect(() => {
-    dispatch(getCategories());
-  }, []);
   return (
     <View>
       <FlatList

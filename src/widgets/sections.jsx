@@ -7,7 +7,7 @@ const Sections = () => {
     <View>
       <FlatList
         data={sections}
-        renderItem={({item}) => <Section section={item} />}
+        renderItem={({item}) => <Section item={item} />}
       />
     </View>
   );

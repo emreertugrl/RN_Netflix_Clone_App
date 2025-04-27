@@ -1,5 +1,9 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {CATEGORIES_URL, TOP_RATED_URL} from '../../service/urls';
+import {
+  CATEGORIES_URL,
+  POPULAR_MOVIES_URL,
+  TOP_RATED_URL,
+} from '../../service/urls';
 import {getRequest} from '../../service/verbs';
 
 const getTopRatedMovies = createAsyncThunk(
@@ -10,10 +14,17 @@ const getTopRatedMovies = createAsyncThunk(
     return response.data.results;
   },
 );
+const getPopularMovies = createAsyncThunk(
+  'movies/getPopularMovies',
+  async params => {
+    const response = await getRequest(POPULAR_MOVIES_URL, params);
+    return response.data.results;
+  },
+);
 
 const getCategories = createAsyncThunk('movies/getCategories', async params => {
   const response = await getRequest(CATEGORIES_URL, params);
   return response.data.genres;
 });
 
-export {getTopRatedMovies, getCategories};
+export {getTopRatedMovies, getPopularMovies, getCategories};
