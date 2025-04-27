@@ -1,26 +1,26 @@
-//import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, FlatList, Text} from 'react-native';
 import {defaultScreenStyle} from '../../styles/defaultScreenStyle';
+import {useDispatch, useSelector} from 'react-redux';
+import {getTopRatedMovies} from '../../store/actions/movieActions';
+import {useEffect} from 'react';
 
-// create a component
 const HomeScreen = () => {
+  const dispatch = useDispatch();
+  const {topRatedMovies, pending} = useSelector(state => state.movies);
+  useEffect(() => {
+    dispatch(getTopRatedMovies());
+  }, []);
+
   return (
     <View style={defaultScreenStyle.container}>
-      <Text>HomeScreen</Text>
+      <FlatList
+        data={topRatedMovies}
+        renderItem={({item}) => (
+          <Text style={{color: 'white'}}>{item.original_title}</Text>
+        )}
+      />
     </View>
   );
 };
 
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#2c3e50',
-  },
-});
-
-//make this component available to the app
 export default HomeScreen;
