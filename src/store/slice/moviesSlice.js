@@ -1,13 +1,17 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {
   getCategories,
+  getNowPlayingMovies,
   getPopularMovies,
   getTopRatedMovies,
+  getUpComingMovies,
 } from '../actions/movieActions';
 
 const initialState = {
   topRatedMovies: [],
   popularMovies: [],
+  upComingMovies: [],
+  nowPlayingMovies: [],
   categories: [],
   pending: false,
   error: null,
@@ -42,7 +46,7 @@ const moviesSlice = createSlice({
         state.pending = false;
         state.error = action.error;
       })
-      // Rate Movies
+      // Popular Movies
       .addCase(getPopularMovies.pending, state => {
         state.pending = true;
       })
@@ -51,6 +55,30 @@ const moviesSlice = createSlice({
         state.popularMovies = action.payload;
       })
       .addCase(getPopularMovies.rejected, (state, action) => {
+        state.pending = false;
+        state.error = action.error;
+      })
+      // Upcoming Movies
+      .addCase(getUpComingMovies.pending, state => {
+        state.pending = true;
+      })
+      .addCase(getUpComingMovies.fulfilled, (state, action) => {
+        state.pending = false;
+        state.upComingMovies = action.payload;
+      })
+      .addCase(getUpComingMovies.rejected, (state, action) => {
+        state.pending = false;
+        state.error = action.error;
+      })
+      // Now Playing Movies
+      .addCase(getNowPlayingMovies.pending, state => {
+        state.pending = true;
+      })
+      .addCase(getNowPlayingMovies.fulfilled, (state, action) => {
+        state.pending = false;
+        state.nowPlayingMovies = action.payload;
+      })
+      .addCase(getNowPlayingMovies.rejected, (state, action) => {
         state.pending = false;
         state.error = action.error;
       });

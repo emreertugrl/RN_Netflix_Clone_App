@@ -5,19 +5,19 @@ const {width, height} = Dimensions.get('window');
 const sections = [
   {
     id: 1,
-    title: 'Releases in the Past Year',
+    title: 'Top Rated Movies',
   },
   {
     id: 2,
-    title: 'Continue Watching for Drashi',
+    title: 'Popular Movies',
   },
   {
     id: 3,
-    title: 'Suspenseful Tv Shows',
+    title: 'Upcoming Movies',
   },
   {
     id: 4,
-    title: 'Selected for You Today',
+    title: 'Now Playing Movies',
   },
   {
     id: 5,

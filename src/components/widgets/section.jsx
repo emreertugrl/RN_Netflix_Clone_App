@@ -1,11 +1,10 @@
-//import liraries
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import {ThemeColors} from '../../theme/themeColors';
 import {useSelector} from 'react-redux';
 import MovieItem from '../movies/movieItem';
-// create a component
 const Section = ({item}) => {
-  const {topRatedMovies, popularMovies} = useSelector(state => state.movies);
+  const {topRatedMovies, popularMovies, upComingMovies, nowPlayingMovies} =
+    useSelector(state => state.movies);
   const setData = () => {
     switch (item.id) {
       case 1:
@@ -13,19 +12,17 @@ const Section = ({item}) => {
       case 2:
         return popularMovies;
       case 3:
-        return topRatedMovies;
+        return upComingMovies;
       case 4:
-        return topRatedMovies;
+        return nowPlayingMovies;
       case 5:
         return topRatedMovies;
       case 6:
-        return topRatedMovies;
+        return upComingMovies;
       case 7:
-        return topRatedMovies;
+        return popularMovies;
       case 8:
-        return topRatedMovies;
-      case 9:
-        return topRatedMovies;
+        return nowPlayingMovies;
       default:
         return topRatedMovies;
     }
