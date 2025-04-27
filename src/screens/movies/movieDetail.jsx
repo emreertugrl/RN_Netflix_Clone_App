@@ -38,37 +38,36 @@ const MovieDetail = ({route}) => {
           <View style={styles.infoContainer}>
             <View style={styles.heartContainer}>
               <Heart color={ThemeColors.RED} size={30} style={styles.heart} />
-
-              <Text style={styles.title}>{movie.original_title}</Text>
+              <Text style={styles.title}>{movie?.original_title}</Text>
             </View>
-            <Text style={styles.tagline}>{movie.tagline}</Text>
-            <Text style={styles.overView}>{movie.overview}</Text>
+            <Text style={styles.tagline}>{movie?.tagline}</Text>
+            <Text style={styles.overView}>{movie?.overview}</Text>
             <Text style={styles.section}>Language</Text>
             <View style={styles.genresContainer}>
-              {movie.spoken_languages.map((item, index) => (
+              {movie?.spoken_languages?.map((item, index) => (
                 <Text key={index} style={styles.genres}>
-                  {item.name}
+                  {item?.name}
                 </Text>
               ))}
             </View>
             <Text style={styles.section}>Production Country</Text>
             <View style={styles.genresContainer}>
-              {movie.production_countries.map((item, index) => (
+              {movie?.production_countries?.map((item, index) => (
                 <Text key={index} style={styles.genres}>
-                  {item.name}
+                  {item?.name}
                 </Text>
               ))}
             </View>
             <Text style={styles.section}>Genres</Text>
             <View style={styles.genresContainer}>
-              {movie.genres.map((item, index) => (
+              {movie?.genres?.map((item, index) => (
                 <Text key={index} style={styles.genres}>
-                  {item.name}
+                  {item?.name}
                 </Text>
               ))}
             </View>
           </View>
-          <Text style={styles.vote}>{movie.vote_average.toFixed(1)}</Text>
+          <Text style={styles.vote}>{movie?.vote_average?.toFixed(1)}</Text>
         </ScrollView>
       )}
     </View>
