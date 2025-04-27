@@ -5,6 +5,7 @@ import {
   TOP_RATED_URL,
   UPCOMING_MOVIES_URL,
   NOWPLAYING_MOVIES_URL,
+  MOVIE_URL,
 } from '../../service/urls';
 import {getRequest} from '../../service/verbs';
 
@@ -37,6 +38,10 @@ const getNowPlayingMovies = createAsyncThunk(
     return response.data.results;
   },
 );
+const getMovieData = createAsyncThunk('movies/getMovieData', async params => {
+  const response = await getRequest(MOVIE_URL + params.movieId, params);
+  return response.data;
+});
 const getCategories = createAsyncThunk('movies/getCategories', async params => {
   const response = await getRequest(CATEGORIES_URL, params);
   return response.data.genres;
@@ -47,5 +52,6 @@ export {
   getPopularMovies,
   getUpComingMovies,
   getNowPlayingMovies,
+  getMovieData,
   getCategories,
 };

@@ -1,12 +1,17 @@
 //import liraries
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image, Pressable} from 'react-native';
 import {IMAGE_BASE_URL} from '../../service/urls';
 import {height, width} from '../../utils/constants';
+import {MOVIEDETAIL} from '../../utils/routes';
+import {useNavigation} from '@react-navigation/native';
 
 // create a component
 const MovieItem = ({item}) => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
+    <Pressable
+      onPress={() => navigation.navigate(MOVIEDETAIL, {movieId: item.id})}
+      style={styles.container}>
       <Image
         style={{
           width: width * 0.3,
@@ -16,7 +21,7 @@ const MovieItem = ({item}) => {
         }}
         source={{uri: IMAGE_BASE_URL + item?.poster_path}}
       />
-    </View>
+    </Pressable>
   );
 };
 

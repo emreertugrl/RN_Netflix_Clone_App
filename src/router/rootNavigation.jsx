@@ -2,6 +2,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   ADDNEWWATCHLIST,
   GETSTARTED,
+  MOVIEDETAIL,
   SIGNIN,
   TAB,
   WATCHLIST,
@@ -13,6 +14,7 @@ import {ThemeColors} from '../theme/themeColors';
 import {Edit2} from 'iconsax-react-nativejs';
 import AddNewWatchList from '../screens/watchList/addNewWatchList';
 import TabNavigator from './tabNavigation';
+import MovieDetail from '../screens/movies/movieDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -53,6 +55,13 @@ export default RootNavigation = () => {
         }}
         name={TAB}
         component={TabNavigator}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name={MOVIEDETAIL}
+        component={MovieDetail}
       />
     </Stack.Navigator>
   );
